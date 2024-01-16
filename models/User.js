@@ -36,9 +36,13 @@ UserSchema.methods.createJWT = function () {
         { userId: this.id, name: this.name },
         process.env.JWT_SECRET,
         {
-            expiresIn: JWT_TTL
+            expiresIn: process.env.JWT_TTL
         }
     );
+}
+
+UserSchema.methods.isPasswordCorrect = async function (password) {
+    return await bcrypt.compare(password, $this.password);
 }
 
 module.exports = mongoose.model('User', UserSchema);
