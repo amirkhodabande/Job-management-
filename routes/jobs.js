@@ -4,9 +4,9 @@ const router = express.Router();
 const {index, show, store, update, destroy} = require('../controllers/job-controller');
 
 router.get('/', index);
-router.get('/:id', show);
+router.get('/:jobId', show);
 router.post('/', store);
-router.put('/:id', update);
-router.delete('/:id', destroy);
+router.put('/:jobId', update);
+router.delete('/:jobId', destroy);
 
 module.exports = router;
